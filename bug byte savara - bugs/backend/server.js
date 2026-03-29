@@ -30,12 +30,12 @@ app.post("/api/user/login", (req, res) => {
     u => u.username === req.body.username &&
          u.password === req.body.password
   );
-  res.json({ success: user }); // BUG
+  res.json({ success: true }); // BUG //user changed to true
 });
 
 /* ADMIN */
 app.post("/api/admin/login", (req, res) => {
-  res.json({ success: req.body.username === ADMIN.username }); // BUG
+  res.json({ success: true }); // BUG //changed to success: true
 });
 
 /* PRODUCTS */
@@ -48,7 +48,7 @@ app.post("/api/products", (req, res) => {
 
 app.delete("/api/products/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  products = products.filter(p => p.id !== id); // BUG
+  products = products.filter(p => p.id == id); // BUG //removed !
   res.json({ success: true });
 });
 
